@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+        <title>index</title>
+        <script>
+            $(function(){
+                $('#test_jquery_button').click(function(){
+                    alert('test jquery');
+                });
+                $('#conversation_div').children('button').click(function(){
+                    $('#conversation_zone').toggle();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>conversational AI</header>
+        <button id='test_jquery_button'>test jquery button</button>
+        <div id='conversation_div'>
+            <div id='conversation_zone'>
+                <p>conversation_zone</p>
+            </div>
+            <button>chat with bot</button>
+        </div>
+    </body>
+</html>
