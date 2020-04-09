@@ -19,7 +19,7 @@ def cleanCorpora(texts):
         cleaned_tokens=[]
         for token, tag in tagged_tokens:
             if token not in stopwords:
-                t=token
+                t=token.lower()
                 if tag in noun_tags:
                     t=lemmatizer.lemmatize(token, 'n').lower()
                 if tag in verb_tags:
@@ -51,3 +51,22 @@ def calculateSimilarity(clean_tokens_list, query):
 
 def calculateAllNames(query):
     return calculateSimilarity(cleaned_tokens_list, query)
+def calculateLogical(nodeid, query):
+    rs=qp.getRelatedNodes(nodeid)
+    # print(rs)
+    ids=[]
+    corp=[]
+    for r in rs:
+        ids.append(r['id'])
+        corp.append(r['name'])
+    # print(ids)
+    # print(corp)
+    cleaned_logicaltokens_list=cleanCorpora(corp)
+    print(cleaned_logicaltokens_list)
+    return [ids, calculateSimilarity(cleaned_logicaltokens_list, query)]
+
+# l=calculateLogical(37, 'explore knowledge sources next step')
+# ids=l[0]
+# sims=l[1]
+# print(ids)
+# print(list(enumerate(sims)))

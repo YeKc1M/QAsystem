@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from flask.helpers import url_for
 
-from Modelling import cleanCorpora, calculateSimilarity, calculateAllNames
+from Modelling import calculateAllNames, calculateLogical
 
 app=Flask(__name__)
 
