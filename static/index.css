@@ -10,7 +10,17 @@ header{
 
 div#conversation_zone{
     display: none;
-    border: 2px black;
-    height: 200px;
+    border: 2px solid black;
+    height: 400px;
+    width: 350px;
+}
+
+#conversation_zone div{
+    color:red;
+    border: 1px solid pink;
     width: 150px;
+}
+#conversation_zone div.myMsg{
+    position: relative;
+    left: 200px;
 }
