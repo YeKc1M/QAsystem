@@ -2,11 +2,11 @@ header{
     color: red;
 }
 
-#conversation_div{
+/* #conversation_div{
     position: absolute;
     right: 10px;
     bottom: 10px;
-}
+} */
 
 div#conversation_zone{
     display: none;
@@ -15,12 +15,13 @@ div#conversation_zone{
     width: 350px;
 }
 
-#conversation_zone div{
-    color:red;
-    border: 1px solid pink;
+#conversation_div div.botMsg{
+    border: 1px solid black;
     width: 150px;
 }
-#conversation_zone div.myMsg{
+#conversation_div div.myMsg{
     position: relative;
     left: 200px;
+    width: 150px;
+    border: 1px solid red;
 }

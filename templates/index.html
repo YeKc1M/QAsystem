@@ -5,12 +5,27 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
         <title>index</title>
         <script>
+            $SCRIPT_ROOT={{ request.script_root|tojson|safe }};
             $(function(){
                 $('#test_jquery_button').click(function(){
                     alert('test jquery');
                 });
                 $('#conversation_div').children('button').click(function(){
                     $('#conversation_zone').toggle();
+                });
+                $('#question_button').click(function(){
+                    //alert('button clicked!');
+                    var q=$('input[name="question_input"]').val();
+                    if(q=='') alert('please input question');
+                    else{
+                        $('#conversation_div').append('<div class="myMsg">'+q+'</div>');
+                        $.post($SCRIPT_ROOT+'/',{
+                            question: q
+                        }, function(data){
+                            alert(data.result);
+                        });
+                    }
+                    $('input[name="question_input"]').val('');
                 });
             });
         </script>
@@ -19,15 +34,11 @@
         <header>conversational AI</header>
         <button id='test_jquery_button'>test jquery button</button>
         <div id='conversation_div'>
-            <div id='conversation_zone'>
-                <div>
-                    <p>conversation_zone</p>
-                </div>
-                <div class='myMsg'>
-                    <p>This is my message shown on the right side</p>
-                </div>
-            </div>
-            <button>chat with bot</button>
+            <div class="botMsg">Hi!</div>
+            <div class="myMsg">my message</div>
+        </div>
+        <div>
+            <input type="text" name='question_input'><button id='question_button'>ask</button>
         </div>
     </body>
 </html>
