@@ -17,11 +17,11 @@ div#conversation_zone{
 
 #conversation_div div.botMsg{
     border: 1px solid black;
-    width: 150px;
+    width: 250px;
 }
 #conversation_div div.myMsg{
     position: relative;
-    left: 200px;
+    left: 300px;
     width: 150px;
     border: 1px solid red;
 }

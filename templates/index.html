@@ -6,6 +6,18 @@
         <title>index</title>
         <script>
             $SCRIPT_ROOT={{ request.script_root|tojson|safe }};
+            function clickQRButton(value, obj){
+                //alert('button clicked!');
+                if(value=='Yes'){
+                    $('#conversation_div').append('<div class="botMsg">Great! Feel free to ask another question.</div>');
+                }else if(value=='No'){
+                    $('#conversation_div').append('<div class="botMsg">Sorry, I could not find what you were looking for</div>');
+                }else{
+                    $('input[name="question_input"]').val(value);
+                    $('#question_button').click();
+                }
+                obj.parentNode.remove();
+            }
             $(function(){
                 $('#test_jquery_button').click(function(){
                     alert('test jquery');
@@ -22,7 +34,39 @@
                         $.post($SCRIPT_ROOT+'/',{
                             question: q
                         }, function(data){
-                            alert(data.result);
+                            //alert(data)
+                            for(var i=0;i<data.length;i++){
+                                reply=data[i];
+                                //alert(reply);
+                                if(reply.type=='text'){
+                                    var content=reply.content;
+                                    while(content.indexOf('\n')!=-1){
+                                        content=content.replace('\n','<br>');
+                                    }
+                                    $('#conversation_div').append('<div class="botMsg">'+content+'</div>');
+                                }else if(reply.type=='QuickReply'){
+                                    var content=reply.content;
+                                    while(content.indexOf('\n')!=-1){
+                                        content=content.replace('\n','<br>');
+                                    }
+                                    //$('#conversation_div').append('<div class="botMsg">'+content+'<br><span>');
+                                    var buttons=reply.buttons;
+                                    buttonText='<div class="botMsg">'+content+'<br><span>';
+                                    for(var j=0;j<buttons.length;j++){
+                                        button=buttons[j];
+                                        buttonText+=('<button onClick="clickQRButton('+"'"+button.value+"',this"
+                                        +')">'+button.title+'</button>');
+                                        // $('#conversation_div').append('<button onClick="clickQRButton('+"'"+button.value+"',this"
+                                        // +')">'+button.title+'</button>')
+                                    }
+                                    buttonText+='</span></div>'
+                                    //alert(buttonText);
+                                    $('#conversation_div').append(buttonText);
+                                    //$('#conversation_div').append('</span></div>');
+                                }else{
+                                    alert('unexpected type data');
+                                }
+                            }
                         });
                     }
                     $('input[name="question_input"]').val('');

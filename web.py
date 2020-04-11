@@ -21,17 +21,38 @@ def index():
         maxSim=sims[0]
         print(str(maxSim[0])+' '+str(maxSim[1]))
         results=[]
-        if(maxSim[1]>0.6):
+        if(maxSim[1]>0.5):
             print('calculate logical')
+            l=calculateLogical(maxSim[0], question)
+            ids=l[0]
+            logicalSims=l[1]
+            id=maxSim[0]
+            content=''
+            if(logicalSims[0][1]>0.7):
+                id=ids[logicalSims[0][0]]
+                print(id)
+                content=qp.getResult(id)
+            else:
+                content=qp.getResult(id)
+            reply={'type':'text'}
+            reply['content']=content
+            results.append(reply)
+            quickReply={'type':'QuickReply','buttons':[{'title':'Yes','value':'Yes'},{'title':'No','value':'No'}],
+            'content':'Is it helpful?'}
+            results.append(quickReply)
         else:
             print('return 3')
             reply={'type':'QuickReply','buttons':[]}
+            content=''
             for i in range(0,3):
                 button={'title':'Q'+str(i+1),'value':qp.names[sims[i][0]]}
                 reply['buttons'].append(button)
+                content+=('Q'+str(i+1)+': '+qp.names[sims[i][0]]+'\n')
+            content=content[:-1]
+            reply['content']=content
             results.append(reply)
         print(results)
-        return jsonify(result=question+' back')
+        return jsonify(results)
     return render_template('index.html')
 
 if __name__=='__main__':
