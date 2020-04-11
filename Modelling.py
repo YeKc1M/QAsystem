@@ -44,7 +44,7 @@ def calculateSimilarity(clean_tokens_list, query):
 
     query_bow=dictionary.doc2bow(query.split(' '))
     sims=index[tfidf[query_bow]]
-    return sims
+    return sorted(enumerate(sims), key=lambda x:x[1],reverse=True)
 
 # sims=calculateSimilarity(cleaned_tokens_list, 'explore knowledge sources step 1')
 # print(sorted(enumerate(sims), key=lambda x: x[1], reverse=True)[0])
