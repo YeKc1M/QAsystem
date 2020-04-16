@@ -8,16 +8,22 @@ header{
     bottom: 10px;
 } */
 
-div#conversation_zone{
-    display: none;
+/* div#conversation_zone{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+} */
+div#conversation_div{
+    overflow-y: scroll;
     border: 2px solid black;
-    height: 400px;
-    width: 350px;
+    height: 500px;
+    width: 500px;
 }
 
 #conversation_div div.botMsg{
     border: 1px solid black;
     width: 250px;
+    position: relative;
 }
 #conversation_div div.myMsg{
     position: relative;
