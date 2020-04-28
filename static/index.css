@@ -13,7 +13,7 @@ div#conversation_zone{
     left: 50%;
     top: 50%;
     margin-left: -250px;
-    margin-top: -150px;
+    margin-top: -250px;
 } 
 div#conversation_div{
     overflow-y: scroll;
@@ -34,4 +34,11 @@ div#conversation_div{
     width: 150px;
     border: 1px solid red;
     margin-top: 10px;
+}
+
+#question_input_div{
+    float: right;
+}
+#question_input_div input{
+    width: 450px;
 }
