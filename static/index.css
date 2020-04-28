@@ -26,10 +26,12 @@ div#conversation_div{
     border: 1px solid black;
     width: 250px;
     position: relative;
+    margin-top: 10px;
 }
 #conversation_div div.myMsg{
     position: relative;
     left: 300px;
     width: 150px;
     border: 1px solid red;
+    margin-top: 10px;
 }

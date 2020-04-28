@@ -16,7 +16,7 @@ class QuestionParser:
         return rs
     def getResult(self, id):
         rs=self.graph.run('match(n) where id(n)='+str(id)+' return n.context as context').data()
-        s=rs[0]['context']
+        s='<strong>'+rs[0]['context']+'</strong>'
         rs=self.graph.run('match(p)-[r]->(n) where id(p)='+str(id)+
         ' and type(r)<>"Next" return n.context as context order by r.no')
         for r in rs:
