@@ -8,11 +8,13 @@ header{
     bottom: 10px;
 } */
 
-/* div#conversation_zone{
+div#conversation_zone{
     position: absolute;
     left: 50%;
     top: 50%;
-} */
+    margin-left: -250px;
+    margin-top: -150px;
+} 
 div#conversation_div{
     overflow-y: scroll;
     border: 2px solid black;

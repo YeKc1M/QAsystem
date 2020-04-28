@@ -21,7 +21,7 @@ def index():
         maxSim=sims[0]
         print(str(maxSim[0])+' '+str(maxSim[1]))
         results=[]
-        if(maxSim[1]>0.55):
+        if(maxSim[1]>0.6):
             print('calculate logical')
             l=calculateLogical(maxSim[0], question)
             ids=l[0]
