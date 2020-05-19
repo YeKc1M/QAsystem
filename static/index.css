@@ -7,22 +7,29 @@ header{
     right: 10px;
     bottom: 10px;
 } */
-
+body{
+    background-image: url('PC.jpg');
+    background-repeat: no-repeat;
+    background-position: 35% 15%;
+}
 div#conversation_zone{
+    background-size: 800px;
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -250px;
-    margin-top: -250px;
+    margin-left: -375px;
+    margin-top: -320px;
 } 
 div#conversation_div{
     overflow-y: scroll;
     border: 2px solid black;
-    height: 500px;
-    width: 500px;
+    height: 370px;
+    width: 600px;
 }
 
 #conversation_div div.botMsg{
+    position: relative;
+    left: 25px;
     border: 1px solid black;
     width: 250px;
     position: relative;
@@ -30,8 +37,8 @@ div#conversation_div{
 }
 #conversation_div div.myMsg{
     position: relative;
-    left: 300px;
-    width: 150px;
+    left: 350px;
+    width: 200px;
     border: 1px solid red;
     margin-top: 10px;
 }
@@ -41,4 +48,8 @@ div#conversation_div{
 }
 #question_input_div input{
     width: 450px;
+    background-color: transparent;
+}
+#question_input_div button{
+    background-color: transparent;
 }
